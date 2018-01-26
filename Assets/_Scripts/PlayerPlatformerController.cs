@@ -59,7 +59,7 @@ public class PlayerPlatformerController : PhysicsObject {
         //move.x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad");
         //move.x = Input.GetAxis("HorizontalGamePad");
 
-        if (Input.GetButtonDown("xbox button a") && grounded)
+        if (Input.GetButtonDown("Jump") && grounded)
         {
             velocity.y = jumpTakeOffSpeed;
 
@@ -67,7 +67,7 @@ public class PlayerPlatformerController : PhysicsObject {
             //audio.Play();
 
         }
-        else if(Input.GetButtonUp("xbox button a"))
+        else if(Input.GetButtonUp("Jump"))
         {
             if(velocity.y > 0)
             {
