@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerCircuitLogic : MonoBehaviour {
 
-    public GameObject upCircuit;
-    public GameObject rightCircuit;
-    public GameObject downCircuit;
-    public GameObject leftCircuit;
+    private GameObject upCircuit;
+    private GameObject rightCircuit;
+    private GameObject downCircuit;
+    private GameObject leftCircuit;
 
     public bool upCircuitPresent;
     public bool rightCircuitPresent;
@@ -26,7 +24,12 @@ public class PlayerCircuitLogic : MonoBehaviour {
         rightCircuit = transform.GetChild(1).gameObject;
         downCircuit = transform.GetChild(2).gameObject;
         leftCircuit = transform.GetChild(3).gameObject;
-        
+
+        upCircuit.SetActive(upCircuitPresent);
+        rightCircuit.SetActive(rightCircuitPresent);
+        downCircuit.SetActive(downCircuitPresent);
+        leftCircuit.SetActive(leftCircuitPresent);
+
     }
 	
 	// Update is called once per frame

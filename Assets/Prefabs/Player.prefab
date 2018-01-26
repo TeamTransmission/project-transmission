@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4156096121364014}
+  - component: {fileID: 114479800553278076}
   m_Layer: 0
   m_Name: Circuit
   m_TagString: Untagged
@@ -498,3 +499,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114479800553278076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178078000471832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143cea08c56fe5042b2f4bf987460b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upCircuitPresent: 1
+  rightCircuitPresent: 0
+  downCircuitPresent: 0
+  leftCircuitPresent: 1
+  upCircuitEnergised: 0
+  rightCircuitEnergised: 0
+  downCircuitEnergised: 0
+  leftCircuitEnergised: 0
