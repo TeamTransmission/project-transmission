@@ -518,3 +518,6 @@ MonoBehaviour:
   rightCircuitEnergised: 0
   downCircuitEnergised: 0
   leftCircuitEnergised: 0
+  nonEnergisedMaterial: {fileID: 2100000, guid: f20066c1a298f2340830fcbf24c454d3,
+    type: 2}
+  energisedMaterial: {fileID: 2100000, guid: cc579c9a5b4830b41955476bc72ae3a3, type: 2}

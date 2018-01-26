@@ -17,6 +17,9 @@ public class PlayerCircuitLogic : MonoBehaviour {
     public bool downCircuitEnergised;
     public bool leftCircuitEnergised;
 
+    public Material nonEnergisedMaterial;
+    public Material energisedMaterial;
+
     // Use this for initialization
     void Start () {
 
