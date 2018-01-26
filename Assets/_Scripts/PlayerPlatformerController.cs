@@ -24,7 +24,7 @@ public class PlayerPlatformerController : PhysicsObject {
     private Transform rightLeg;
     private Transform leftLeg;
 
-    private CyclePositiveNegative cpn;
+    //private CyclePositiveNegative cpn;
 
     public float cycleTime = 0.5f;
     public float cycleAngle = 45f;
@@ -42,7 +42,7 @@ public class PlayerPlatformerController : PhysicsObject {
 
         startAngle = transform.rotation.z;
 
-        cpn = new CyclePositiveNegative();
+        //cpn = new CyclePositiveNegative();
 
     }
 
@@ -63,8 +63,8 @@ public class PlayerPlatformerController : PhysicsObject {
         {
             velocity.y = jumpTakeOffSpeed;
 
-            AudioSource audio = GetComponent<AudioSource>();
-            audio.Play();
+            //AudioSource audio = GetComponent<AudioSource>();
+            //audio.Play();
 
         }
         else if(Input.GetButtonUp("xbox button a"))
@@ -77,70 +77,70 @@ public class PlayerPlatformerController : PhysicsObject {
               
         targetVelocity = move * maxSpeed;
 
-        MeshRotation(move.x);
+        //MeshRotation(move.x);
 
     }
 
-    private void MeshRotation(float moveX)
-    {
+    //private void MeshRotation(float moveX)
+    //{
 
-        float CycleValue = cpn.ReturnCyclingValue(cycleTime);
+    //    float CycleValue = cpn.ReturnCyclingValue(cycleTime);
 
-        tempCycleValue = CycleValue;
+    //    tempCycleValue = CycleValue;
 
-        Quaternion MeshAngles;
+    //    Quaternion MeshAngles;
         
-        if (moveX > 0.1)
-        {
-            //move right, rotate localrotation positive
-            MeshAngles = Quaternion.Euler(0, -45, 0);
+    //    if (moveX > 0.1)
+    //    {
+    //        //move right, rotate localrotation positive
+    //        MeshAngles = Quaternion.Euler(0, -45, 0);
 
-            LegRunningMovement(leftLeg, CycleValue);
-            LegRunningMovement(rightLeg, CycleValue, - 1);
+    //        LegRunningMovement(leftLeg, CycleValue);
+    //        LegRunningMovement(rightLeg, CycleValue, - 1);
 
-        }
-        else if(moveX < -0.1)
-        {
-            //move left, rotate negative
-            MeshAngles = Quaternion.Euler(0, 45, 0);
+    //    }
+    //    else if(moveX < -0.1)
+    //    {
+    //        //move left, rotate negative
+    //        MeshAngles = Quaternion.Euler(0, 45, 0);
 
-            LegRunningMovement(leftLeg, CycleValue);
-            LegRunningMovement(rightLeg, CycleValue, - 1);
+    //        LegRunningMovement(leftLeg, CycleValue);
+    //        LegRunningMovement(rightLeg, CycleValue, - 1);
             
-        }
-        else
-        {
-            //not moving, set rotation to zero
-            MeshAngles = Quaternion.Euler(0, 0, 0);
-        }
+    //    }
+    //    else
+    //    {
+    //        //not moving, set rotation to zero
+    //        MeshAngles = Quaternion.Euler(0, 0, 0);
+    //    }
 
-        if(!grounded)
-        {
-            //arms up
-            //eyes big? shocked face?
-        }
-        else
-        {
-            //arms donw;
-        }
+    //    if(!grounded)
+    //    {
+    //        //arms up
+    //        //eyes big? shocked face?
+    //    }
+    //    else
+    //    {
+    //        //arms donw;
+    //    }
 
         //maybe add some logic here so that this is only updated if changed since last frame!!!!!!!!!!!!!
 
-        meshTransform.localRotation = MeshAngles;
+        //meshTransform.localRotation = MeshAngles;
 
         //here, UpdatePosition for every limb after being manipulated in above if statements
 
     }
 
     // Update is called once per frame
-    public void LegRunningMovement(Transform trans, float CycleValue, float multiplier = 1)
-    {
+    //public void LegRunningMovement(Transform trans, float CycleValue, float multiplier = 1)
+    //{
                 
-        trans.localEulerAngles = new Vector3(cycleAngle * CycleValue * multiplier, trans.rotation.y, trans.rotation.z);
+    //    trans.localEulerAngles = new Vector3(cycleAngle * CycleValue * multiplier, trans.rotation.y, trans.rotation.z);
 
-    }
+    //}
 
-}
+//}
 
 
 
