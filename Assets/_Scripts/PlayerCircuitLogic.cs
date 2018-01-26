@@ -12,10 +12,7 @@ public class PlayerCircuitLogic : MonoBehaviour {
     public bool downCircuitPresent;
     public bool leftCircuitPresent;
 
-    public bool upCircuitEnergised;
-    public bool rightCircuitEnergised;
-    public bool downCircuitEnergised;
-    public bool leftCircuitEnergised;
+    public bool circuitEnergised;
 
     public Material nonEnergisedMaterial;
     public Material energisedMaterial;
@@ -37,6 +34,27 @@ public class PlayerCircuitLogic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+        SetMaterialBasedOnEnergisation(upCircuit, circuitEnergised);
+        SetMaterialBasedOnEnergisation(rightCircuit, circuitEnergised);
+        SetMaterialBasedOnEnergisation(downCircuit, circuitEnergised);
+        SetMaterialBasedOnEnergisation(leftCircuit, circuitEnergised);
+
+    }
+
+
+    void SetMaterialBasedOnEnergisation(GameObject go, bool energised)
+    {
+
+        if (energised)
+        {
+            go.transform.GetComponent<Renderer>().sharedMaterial = energisedMaterial;
+        }
+        else
+        {
+            go.transform.GetComponent<Renderer>().sharedMaterial = nonEnergisedMaterial;
+        }
+
+    }
+    
 }
