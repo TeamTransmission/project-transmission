@@ -12,6 +12,7 @@ public class PhysicsObject : MonoBehaviour
     protected bool grounded;
     protected Vector2 groundNormal;
     protected Rigidbody2D rb2d;
+    protected BoxCollider2D playerBoxCollider;
     protected Vector2 velocity;
     protected ContactFilter2D contactFilter;
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
@@ -24,6 +25,8 @@ public class PhysicsObject : MonoBehaviour
     void OnEnable()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        playerBoxCollider = GetComponent<BoxCollider2D>();
+
     }
 
     void Start()
@@ -73,28 +76,33 @@ public class PhysicsObject : MonoBehaviour
 
         if (distance > minMoveDistance)
         {
-            int count = rb2d.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
+            //int count = rb2d.Cast(move, contactFilter, hitBuffer, distance + shellRadius);            
+            int count = playerBoxCollider.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
+
             hitBufferList.Clear();
             
             for (int i = 0; i < count; i++)
             {
-
-                switch(hitBuffer[i].transform.gameObject.layer)
-                {
-                    case 16:;  //16 is the one way platfrom layer
-                        if(hitBuffer[i].transform.position.y<gameObject.transform.position.y -0.4)
-                        {
-                            hitBufferList.Add(hitBuffer[i]);
-                        }
-                        break;
-                    case 17:;  //17 is the pass through player layer
-                        //do nothing
-                        break;
-                    default:
-                        hitBufferList.Add(hitBuffer[i]);
-                        break;
-                }
                 
+                if(hitBuffer[i].collider.isTrigger == false)
+                    {
+                    switch (hitBuffer[i].transform.gameObject.layer)
+                    {
+
+                        case 16:;  //16 is the one way platfrom layer
+                            if (hitBuffer[i].transform.position.y < gameObject.transform.position.y - 0.4)
+                            {
+                                hitBufferList.Add(hitBuffer[i]);
+                            }
+                            break;
+                        case 17:;  //17 is the pass through player layer
+                                   //do nothing
+                            break;
+                        default:
+                            hitBufferList.Add(hitBuffer[i]);
+                            break;
+                    }
+                }
             }
 
             for (int i = 0; i < hitBufferList.Count; i++)
