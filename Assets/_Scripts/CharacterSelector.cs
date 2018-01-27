@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSelector : MonoBehaviour {
+public class CharacterSelector : MonoBehaviour
+{
 
     public GameObject[] players;
     public GameObject activePlayer;
@@ -12,7 +13,8 @@ public class CharacterSelector : MonoBehaviour {
     private int playerCount;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         //get list of players
         //won't work if we get all objects with tag player since it will grab child objects too
@@ -21,13 +23,14 @@ public class CharacterSelector : MonoBehaviour {
         playerCount = players.Length;
 
         Debug.Log("Player Count = " + playerCount.ToString());
-        
-    }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if(Input.GetButtonDown("xbox button lb"))
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (Input.GetButtonDown("xbox button lb"))
         {
             if (activePlayer = null)
             {
@@ -55,5 +58,7 @@ public class CharacterSelector : MonoBehaviour {
 
             activePlayer = players[activePlayerNumber];
         }
-            
+
+    }
 }
+
