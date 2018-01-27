@@ -74,13 +74,21 @@ public class PlayerDetectionLogic : MonoBehaviour {
         {
             //Debug.Log("Collision detected to PowerSource");
 
-            if (enter)
+            if (other.GetComponent<PowerSource>().energised)
             {
-                //detectionCounter++;
-                AddToColliderList(other);
-            }
+                if (enter)
+                {
+                    //detectionCounter++;
+                    AddToColliderList(other);
+                }
 
-            detection = true;
+                detection = true;
+            }
+            else if(transform.parent.parent.GetComponentInChildren<PlayerCircuitLogic>().circuitEnergised)
+            {
+                //activate the checkpoint or level exit
+                other.GetComponent<PowerSource>().Energise();
+            }
         }        
 
     }
