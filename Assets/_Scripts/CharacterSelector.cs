@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CharacterSelector : MonoBehaviour
 {
 
-    public GameObject[] players;
+    //public GameObject[] players;
+    public List<GameObject> players = new List<GameObject>();
+
     public GameObject activePlayer;
 
     public int activePlayerNumber;
@@ -18,14 +21,26 @@ public class CharacterSelector : MonoBehaviour
 
         //get list of players
         //won't work if we get all objects with tag player since it will grab child objects too
-        players = GameObject.FindGameObjectsWithTag("Player");
-        
-        playerCount = players.Length;
+        GameObject[] playersArray = GameObject.FindGameObjectsWithTag("Player");
+
+        playerCount = playersArray.Length;
+
+        for (int i = 0; i < playerCount; i++)
+        {
+            players.Add(playersArray[i]);
+        }
+
+        OrderPlayerList();
+
+        for (int i = 0; i < playerCount; i++)
+        {
+            Debug.Log(players[i].transform.position.x);
+        }
 
         Debug.Log("Player Count = " + playerCount.ToString());
 
         //temp character selector
-        activePlayer = players[0];
+        SetDefaultPlayer();
         CharacterActivator();
 
     }
@@ -36,16 +51,17 @@ public class CharacterSelector : MonoBehaviour
 
         if (Input.GetButtonDown("xbox button rb"))
         {
+
             if (activePlayer == null)
             {
-                activePlayerNumber = 0;
+                SetDefaultPlayer();
             }
             else
             {
 
                 SnapCurrentPlayer();
 
-                if (activePlayerNumber < playerCount -1)
+                if (activePlayerNumber < playerCount - 1)
                 {
                     activePlayerNumber++;
                 }
@@ -61,9 +77,10 @@ public class CharacterSelector : MonoBehaviour
 
         if (Input.GetButtonDown("xbox button lb"))
         {
+
             if (activePlayer == null)
             {
-                activePlayerNumber = 0;
+                SetDefaultPlayer();
             }
             else
             {
@@ -88,9 +105,9 @@ public class CharacterSelector : MonoBehaviour
 
     void CharacterActivator()
     {
-        for(int i = 0;i<playerCount; i++)
-        {            
-                players[i].GetComponent<PlayerPlatformerController>().thisCharacterIsActive = (i == activePlayerNumber);            
+        for (int i = 0; i < playerCount; i++)
+        {
+            players[i].GetComponent<PlayerPlatformerController>().thisCharacterIsActive = (i == activePlayerNumber);
         }
     }
 
@@ -98,6 +115,19 @@ public class CharacterSelector : MonoBehaviour
     {
         activePlayer.transform.position = new Vector3(Mathf.RoundToInt(activePlayer.transform.position.x), activePlayer.transform.position.y, 0);
     }
+
+    private void SetDefaultPlayer()
+    {
+        activePlayerNumber = playerCount - 1;
+        activePlayer = players[activePlayerNumber];
+    }
+
+    private void OrderPlayerList()
+        {
+        List<GameObject> playersTemp = new List<GameObject>();
+    playersTemp = players.OrderBy(plyr => plyr.transform.position.x).ToList();
+    players = playersTemp;
+        }
 
 }
 
