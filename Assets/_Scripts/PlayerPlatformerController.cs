@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerPlatformerController : PhysicsObject {
 
+    Animator anim;
+    SpriteRenderer sr;
+
     public bool thisCharacterIsActive;
 
     public float maxSpeed = 7;
@@ -36,15 +39,11 @@ public class PlayerPlatformerController : PhysicsObject {
     // Use this for initialization
     void Start () {
 
-        meshTransform = transform.GetChild(0);
-
-        body = meshTransform.GetChild(0);
-        rightLeg = meshTransform.GetChild(1);
-        leftLeg = meshTransform.GetChild(2);
-
-        startAngle = transform.rotation.z;
-
+        //meshTransform = transform.GetChild(0);
         //cpn = new CyclePositiveNegative();
+
+        anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
 
     }
 
@@ -55,6 +54,25 @@ public class PlayerPlatformerController : PhysicsObject {
         Vector2 move = Vector2.zero;
 
         move.x = 1;
+
+        if (grounded)
+        {
+            anim.SetBool("jumping", false);
+        }
+        if (velocity.x < 0)
+        {
+            anim.SetBool("walking", true);
+            sr.flipX = true;
+        }
+        else if (velocity.x > 0)
+        {
+            anim.SetBool("walking", true);
+            sr.flipX = false;
+        }
+        else
+        {
+            anim.SetBool("walking", false);
+        }
 
         if (thisCharacterIsActive)
         {
@@ -68,6 +86,8 @@ public class PlayerPlatformerController : PhysicsObject {
         if (thisCharacterIsActive && Input.GetButtonDown("xbox button a") && grounded)
         {
             velocity.y = jumpTakeOffSpeed;
+
+            anim.SetBool("jumping", true);
 
             //AudioSource audio = GetComponent<AudioSource>();
             //audio.Play();
