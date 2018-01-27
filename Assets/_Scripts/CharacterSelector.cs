@@ -53,6 +53,7 @@ public class CharacterSelector : MonoBehaviour
         {
 
             OrderPlayerList();
+            activePlayerNumber = GetNumberOfCurrentlyActivePlayer();
 
             if (activePlayer == null)
             {
@@ -81,6 +82,7 @@ public class CharacterSelector : MonoBehaviour
         {
 
             OrderPlayerList();
+            activePlayerNumber = GetNumberOfCurrentlyActivePlayer();
 
             if (activePlayer == null)
             {
@@ -132,6 +134,20 @@ public class CharacterSelector : MonoBehaviour
     playersTemp = players.OrderBy(plyr => plyr.transform.position.x).ToList();
     players = playersTemp;
         }
+
+    private int GetNumberOfCurrentlyActivePlayer()
+    {
+        for(int i=0 ; i<playerCount;i++)
+        {
+            if(activePlayer==players[i])
+            {
+                return i;
+            }
+        }
+
+        return 0;
+
+    }
 
 }
 
