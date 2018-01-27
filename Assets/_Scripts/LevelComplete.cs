@@ -5,13 +5,11 @@ using UnityEngine;
 public class LevelComplete : MonoBehaviour {
 
 	// Use this for initialization
-	void Start ()
-    {
+	void Start () {
 		
 	}
 		
-	void ActivateLevelComplete ()
-    {
+	void ActivateLevelComplete () {
 		
 	}
 }
