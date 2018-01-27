@@ -19,7 +19,7 @@ public class CharacterSelector : MonoBehaviour
         //get list of players
         //won't work if we get all objects with tag player since it will grab child objects too
         players = GameObject.FindGameObjectsWithTag("Player");
-
+        
         playerCount = players.Length;
 
         Debug.Log("Player Count = " + playerCount.ToString());

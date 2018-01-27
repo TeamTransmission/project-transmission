@@ -9,6 +9,7 @@ TagManager:
   - Canvas
   - Music
   - LevelCompleteSound
+  - ConductingBlock
   layers:
   - Default
   - TransparentFX
