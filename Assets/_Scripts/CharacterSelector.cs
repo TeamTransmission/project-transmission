@@ -32,12 +32,15 @@ public class CharacterSelector : MonoBehaviour
 
         if (Input.GetButtonDown("xbox button rb"))
         {
-            if (activePlayer = null)
+            if (activePlayer == null)
             {
                 activePlayerNumber = 0;
             }
             else
             {
+
+                SnapCurrentPlayer();
+
                 if (activePlayerNumber < playerCount -1)
                 {
                     activePlayerNumber++;
@@ -54,12 +57,15 @@ public class CharacterSelector : MonoBehaviour
 
         if (Input.GetButtonDown("xbox button lb"))
         {
-            if (activePlayer = null)
+            if (activePlayer == null)
             {
                 activePlayerNumber = 0;
             }
             else
             {
+
+                SnapCurrentPlayer();
+
                 if (activePlayerNumber > 0)
                 {
                     activePlayerNumber--;
@@ -83,6 +89,12 @@ public class CharacterSelector : MonoBehaviour
                 players[i].GetComponent<PlayerPlatformerController>().thisCharacterIsActive = (i == activePlayerNumber);            
         }
     }
+
+    private void SnapCurrentPlayer()
+    {
+        activePlayer.transform.position = new Vector3(Mathf.RoundToInt(activePlayer.transform.position.x), activePlayer.transform.position.y, 0);
+    }
+
 }
 
 
