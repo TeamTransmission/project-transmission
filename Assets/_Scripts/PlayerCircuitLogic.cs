@@ -12,6 +12,11 @@ public class PlayerCircuitLogic : MonoBehaviour {
     public bool downCircuitPresent;
     public bool leftCircuitPresent;
 
+    public bool upEnergised;
+    public bool rightEnergised;
+    public bool downEnergised;
+    public bool leftEnergised;
+
     public bool circuitEnergised;
 
     public Material nonEnergisedMaterial;
@@ -21,7 +26,7 @@ public class PlayerCircuitLogic : MonoBehaviour {
     public GameObject rightDetector;
     public GameObject downDetector;
     public GameObject leftDetector;
-
+    
     // Use this for initialization
     void Start () {
 
@@ -38,7 +43,15 @@ public class PlayerCircuitLogic : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {              
+
+        upEnergised = upDetector.GetComponent<PlayerDetectionLogic>().detection;
+        rightEnergised = rightDetector.GetComponent<PlayerDetectionLogic>().detection;
+        downEnergised = downDetector.GetComponent<PlayerDetectionLogic>().detection;
+        leftEnergised = leftDetector.GetComponent<PlayerDetectionLogic>().detection;
+
+        circuitEnergised = upEnergised || rightEnergised || downEnergised || leftEnergised;
+            
 
         SetMaterialBasedOnEnergisation(upCircuit, circuitEnergised);
         SetMaterialBasedOnEnergisation(rightCircuit, circuitEnergised);
