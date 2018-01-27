@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PowerSource
   - Manager
+  - Canvas
   layers:
   - Default
   - TransparentFX
