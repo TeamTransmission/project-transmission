@@ -58,10 +58,13 @@ public class PlayerPlatformerController : PhysicsObject
         if (thisCharacterIsActive)
         {
             move.x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad");
+            anim.SetBool("locked", false);
+
         }
         else
         {
             move.x = 0;
+            anim.SetBool("locked", true);
         }
 
         if (thisCharacterIsActive && Input.GetButtonDown("xbox button a") && grounded)
