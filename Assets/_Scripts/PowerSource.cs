@@ -7,11 +7,15 @@ public class PowerSource : MonoBehaviour {
     public bool energised;
     public bool levelGoal;
 
+    private GameObject manager;
+
 	// Use this for initialization
 	void Start ()
     {	
             transform.GetChild(0).gameObject.SetActive(energised);
-	}
+
+        manager = GameObject.FindGameObjectWithTag("Manager");
+    }
 
     public void Energise()
     {
@@ -21,7 +25,7 @@ public class PowerSource : MonoBehaviour {
 
         if(levelGoal)
         {
-            //exit level logic
+            
         }
 
     }
