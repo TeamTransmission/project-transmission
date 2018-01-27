@@ -41,7 +41,7 @@ public class LevelComplete : MonoBehaviour {
         }
         else
         {
-            canvas.GetComponentInChildren<Text>().text = "Thanks for playing";
+            canvas.GetComponentInChildren<Text>().text = "THANKS FOR PLAYING";
         }
 
     }
