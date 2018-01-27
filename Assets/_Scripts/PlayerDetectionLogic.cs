@@ -12,22 +12,42 @@ public class PlayerDetectionLogic : MonoBehaviour {
     void Start()
     {
         //ConnectionNoise = GameObject.FindGameObjectWithTag("CoinCollectNoise");
+        
     }
 
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D other)
     {
 
+        ColliderLogic(other, true);
+
+        if (detection)
+        {
+            //AudioSource audio = ConnectionNoise.GetComponent<AudioSource>();
+            //audio.Play();
+        }
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
+        ColliderLogic(collision, false);
+
+    }
+
+    private void ColliderLogic(Collider2D other, bool enter)
+    {
         if (other.tag == "Player")
         {
 
             PlayerCircuitLogic otherPlayerCircuit = other.GetComponentInChildren<PlayerCircuitLogic>();
 
-            switch(direction)
+            switch (direction)
             {
                 case "Up":
                     detection = otherPlayerCircuit.upCircuitPresent && otherPlayerCircuit.circuitEnergised;
-                break;
+                    break;
 
                 case "Right":
                     detection = otherPlayerCircuit.rightCircuitPresent && otherPlayerCircuit.circuitEnergised;
@@ -39,27 +59,30 @@ public class PlayerDetectionLogic : MonoBehaviour {
 
                 case "Left":
                     detection = otherPlayerCircuit.leftCircuitPresent && otherPlayerCircuit.circuitEnergised;
-                    break;                    
+                    break;
             }
 
-            detectionCounter++;
+            if (enter)
+            {
+                detectionCounter++;
+            }
 
 
         }
         else if (other.tag == "PowerSource")
         {
-            Debug.Log("Collision detected to PowerSource");
-            detectionCounter++;
-            detection = true;
-        }
+            //Debug.Log("Collision detected to PowerSource");
 
-        if (detection)
-        {
-            //AudioSource audio = ConnectionNoise.GetComponent<AudioSource>();
-            //audio.Play();
-        }
+            if (enter)
+            {
+                detectionCounter++;
+            }
+
+            detection = true;
+        }        
 
     }
+
 
     void OnTriggerExit2D(Collider2D other)
     {
