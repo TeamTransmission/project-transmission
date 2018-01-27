@@ -13,6 +13,22 @@ public class PlayerDetectionLogic : MonoBehaviour {
     {
         //ConnectionNoise = GameObject.FindGameObjectWithTag("CoinCollectNoise");
         
+        switch (direction)
+        {
+            case "Up":
+                gameObject.SetActive(transform.parent.parent.GetComponentInChildren<PlayerCircuitLogic>().upCircuitPresent);
+                break;
+            case "Right":
+                gameObject.SetActive(transform.parent.parent.GetComponentInChildren<PlayerCircuitLogic>().rightCircuitPresent);
+                break;
+            case "Down":
+                gameObject.SetActive(transform.parent.parent.GetComponentInChildren<PlayerCircuitLogic>().downCircuitPresent);
+                break;
+            case "Left":
+                gameObject.SetActive(transform.parent.parent.GetComponentInChildren<PlayerCircuitLogic>().leftCircuitPresent);
+                break;
+        }
+
     }
 
     // Update is called once per frame
