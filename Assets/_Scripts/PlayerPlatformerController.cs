@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerPlatformerController : PhysicsObject {
 
+    public bool thisCharacterIsActive;
+
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
 
@@ -48,18 +50,22 @@ public class PlayerPlatformerController : PhysicsObject {
 
     protected override void ComputeVelocity()
     {
+               
+
         Vector2 move = Vector2.zero;
 
         move.x = 1;
 
-        //move.x = Input.GetAxis("Horizontal");
-        
-        //The -1 bug comes from the game pad axis
+        if (thisCharacterIsActive)
+        {
+            move.x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad");
+        }
+        else
+        {
+            move.x = 0;
+        }
 
-        move.x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad");
-        //move.x = Input.GetAxis("HorizontalGamePad");
-
-        if (Input.GetButtonDown("xbox button a") && grounded)
+        if (thisCharacterIsActive && Input.GetButtonDown("xbox button a") && grounded)
         {
             velocity.y = jumpTakeOffSpeed;
 
@@ -67,7 +73,7 @@ public class PlayerPlatformerController : PhysicsObject {
             //audio.Play();
 
         }
-        else if(Input.GetButtonUp("xbox button a"))
+        else if(thisCharacterIsActive && Input.GetButtonUp("xbox button a"))
         {
             if(velocity.y > 0)
             {
