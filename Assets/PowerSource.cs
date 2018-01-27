@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PowerSource : MonoBehaviour {
 
+    public bool energised;
+    bool levelGoal;
+
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {	
+            transform.GetChild(0).gameObject.SetActive(energised);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
