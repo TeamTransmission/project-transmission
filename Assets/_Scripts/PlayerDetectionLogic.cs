@@ -7,7 +7,7 @@ public class PlayerDetectionLogic : MonoBehaviour {
     //public GameObject ConnectionNoise;
     private bool detection = false;
     public string direction;
-
+    
     void Start()
     {
         //ConnectionNoise = GameObject.FindGameObjectWithTag("CoinCollectNoise");
@@ -22,17 +22,39 @@ public class PlayerDetectionLogic : MonoBehaviour {
 
             PlayerCircuitLogic otherPlayerCircuit = other.GetComponentInChildren<PlayerCircuitLogic>();
 
-            if (true)
+            switch(direction)
             {
+                case "Up":
+                    detection = otherPlayerCircuit.upCircuitPresent && otherPlayerCircuit.circuitEnergised;
+                break;
 
-                //logic here
+                case "Right":
+                    detection = otherPlayerCircuit.rightCircuitPresent && otherPlayerCircuit.circuitEnergised;
+                    break;
 
+                case "Down":
+                    detection = otherPlayerCircuit.downCircuitPresent && otherPlayerCircuit.circuitEnergised;
+                    break;
+
+                case "Left":
+                    detection = otherPlayerCircuit.leftCircuitPresent && otherPlayerCircuit.circuitEnergised;
+                    break;                    
+            }
+
+
+            if (detection)
+            {
                 //AudioSource audio = ConnectionNoise.GetComponent<AudioSource>();
                 //audio.Play();
             }
             
         }
 
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        detection = false;
     }
 
 }
