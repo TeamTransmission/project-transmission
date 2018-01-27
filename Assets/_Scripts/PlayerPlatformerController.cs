@@ -73,8 +73,8 @@ public class PlayerPlatformerController : PhysicsObject
 
             anim.SetBool("jumping", true);
 
-            //AudioSource audio = GetComponent<AudioSource>();
-            //audio.Play();
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.Play();
 
         }
         else if (thisCharacterIsActive && Input.GetButtonUp("xbox button a"))
