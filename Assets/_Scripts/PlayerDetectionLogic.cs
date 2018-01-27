@@ -7,7 +7,7 @@ public class PlayerDetectionLogic : MonoBehaviour {
     //public GameObject ConnectionNoise;
     public bool detection = false;
     public string direction;
-    private int detectionCounter = 0;
+    public List<Collider2D> activeColliders= new List<Collider2D>();
     
     void Start()
     {
@@ -46,25 +46,26 @@ public class PlayerDetectionLogic : MonoBehaviour {
             switch (direction)
             {
                 case "Up":
-                    detection = otherPlayerCircuit.upCircuitPresent && otherPlayerCircuit.circuitEnergised;
-                    break;
-
-                case "Right":
-                    detection = otherPlayerCircuit.rightCircuitPresent && otherPlayerCircuit.circuitEnergised;
-                    break;
-
-                case "Down":
                     detection = otherPlayerCircuit.downCircuitPresent && otherPlayerCircuit.circuitEnergised;
                     break;
 
-                case "Left":
+                case "Right":
                     detection = otherPlayerCircuit.leftCircuitPresent && otherPlayerCircuit.circuitEnergised;
+                    break;
+
+                case "Down":
+                    detection = otherPlayerCircuit.upCircuitPresent && otherPlayerCircuit.circuitEnergised;
+                    break;
+
+                case "Left":
+                    detection = otherPlayerCircuit.rightCircuitPresent && otherPlayerCircuit.circuitEnergised;
                     break;
             }
 
             if (enter)
             {
-                detectionCounter++;
+                //detectionCounter++;
+                AddToColliderList(other);
             }
 
 
@@ -75,7 +76,8 @@ public class PlayerDetectionLogic : MonoBehaviour {
 
             if (enter)
             {
-                detectionCounter++;
+                //detectionCounter++;
+                AddToColliderList(other);
             }
 
             detection = true;
@@ -86,11 +88,43 @@ public class PlayerDetectionLogic : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        detectionCounter--;
-        if (detectionCounter < 1)
+        //detectionCounter--;
+        RemoveFromColliderList(other);
+
+        if (activeColliders.Count==0)
         {
             detection = false;
         }
     }
 
+    void AddToColliderList(Collider2D coll)
+    {
+        bool alreadyInList = false;
+
+        for (int i= 0; i<activeColliders.Count; i++)
+        {
+            if(activeColliders[i] = coll)
+            {
+                alreadyInList = true;               
+            }
+        }
+
+        if (!alreadyInList)
+        {
+            activeColliders.Add(coll);
+        }
+    }
+
+    void RemoveFromColliderList(Collider2D coll)
+    {
+
+        for (int i = 0; i < activeColliders.Count; i++)
+        {
+            if (activeColliders[i] = coll)
+            {                
+                activeColliders.Remove(activeColliders[i]);
+            }
+        }
+
+    }
 }
