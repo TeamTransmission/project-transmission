@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class GraphicsUpdate : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    /// Add a context menu named "Do Something" in the inspector
+    /// of the attached script.
+    [ContextMenu("UpdatePlayerGraphics")]
+
+    // Use this for initialization
+    void UpdatePlayerGraphics () {
+
+        GetComponentInChildren<PlayerCircuitLogic>().UpdateCircuitGraphics();
+
+
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -32,7 +32,7 @@ public class PlayerCircuitLogic : MonoBehaviour {
     [ContextMenu("UpdateCircuitGraphics")]
 
     // Use this for initialization
-    void UpdateCircuitGraphics()
+    public void UpdateCircuitGraphics()
     {
 
         upCircuit = transform.GetChild(0).gameObject;
