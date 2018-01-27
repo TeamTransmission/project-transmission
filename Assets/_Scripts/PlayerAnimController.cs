@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimController : MonoBehaviour {
+    Rigidbody2D rb;
     Animator anim;
     SpriteRenderer sr;
-    Rigidbody2D rb;
 
     public double xvel;
     public double yvel;
