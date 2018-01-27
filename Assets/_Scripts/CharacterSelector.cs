@@ -24,6 +24,10 @@ public class CharacterSelector : MonoBehaviour
 
         Debug.Log("Player Count = " + playerCount.ToString());
 
+        //temp character selector
+        activePlayer = players[0];
+        CharacterActivator();
+
     }
 
     // Update is called once per frame
