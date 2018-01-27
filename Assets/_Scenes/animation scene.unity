@@ -302,9 +302,9 @@ GameObject:
   - component: {fileID: 2090874642}
   - component: {fileID: 2090874641}
   - component: {fileID: 2090874640}
-  - component: {fileID: 2090874636}
   - component: {fileID: 2090874644}
   - component: {fileID: 2090874637}
+  - component: {fileID: 2090874638}
   m_Layer: 0
   m_Name: 32bit_0
   m_TagString: Untagged
@@ -312,25 +312,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2090874636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2090874635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d9a7920b57f58a43a69f45f598e3630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minGroundNormalY: 0.65
-  gravityModifier: 1
-  thisCharacterIsActive: 0
-  maxSpeed: 7
-  jumpTakeOffSpeed: 7
-  cycleTime: 0.5
-  cycleAngle: 45
-  tempCycleValue: 0
 --- !u!114 &2090874637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +325,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
+  maxSpeed: 7
+  jumpTakeOffSpeed: 7
+  cycleTime: 0.5
+  cycleAngle: 45
+  tempCycleValue: 0
+--- !u!114 &2090874638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2090874635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9a7920b57f58a43a69f45f598e3630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGroundNormalY: 0.65
+  gravityModifier: 1
+  thisCharacterIsActive: 1
   maxSpeed: 7
   jumpTakeOffSpeed: 7
   cycleTime: 0.5
