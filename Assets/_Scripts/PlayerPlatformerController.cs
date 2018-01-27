@@ -59,7 +59,7 @@ public class PlayerPlatformerController : PhysicsObject {
         //move.x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad");
         //move.x = Input.GetAxis("HorizontalGamePad");
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("xbox button a") && grounded)
         {
             velocity.y = jumpTakeOffSpeed;
 
@@ -67,7 +67,7 @@ public class PlayerPlatformerController : PhysicsObject {
             //audio.Play();
 
         }
-        else if(Input.GetButtonUp("Jump"))
+        else if(Input.GetButtonUp("xbox button a"))
         {
             if(velocity.y > 0)
             {
@@ -144,26 +144,26 @@ public class PlayerPlatformerController : PhysicsObject {
 
 
 
-public class Limb : Transform
-{    
-    public Vector3 standingPos;
-    public Vector3 jumpingPos;
-    public Vector3 runningLeftPos;
-    public Vector3 runningRightPos;
-    public Vector3 jumpingLeftPos;
-    public Vector3 jumpingRightPos;
+//public class Limb : Transform
+//{    
+//    public Vector3 standingPos;
+//    public Vector3 jumpingPos;
+//    public Vector3 runningLeftPos;
+//    public Vector3 runningRightPos;
+//    public Vector3 jumpingLeftPos;
+//    public Vector3 jumpingRightPos;
     
-    public Limb()
-    {
+//    public Limb()
+//    {
 
-    }   
+//    }   
 
-    public void UpdatePosition(Vector3 pos)
-    {
-        localPosition = pos;        
-    }
+//    public void UpdatePosition(Vector3 pos)
+//    {
+//        localPosition = pos;        
+//    }
 
-}
+//}
 
 
 
