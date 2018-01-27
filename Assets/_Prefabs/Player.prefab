@@ -833,8 +833,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
-  maxSpeed: 7
-  jumpTakeOffSpeed: 7
+  maxSpeed: 3
+  jumpTakeOffSpeed: 5
   cycleTime: 0.5
   cycleAngle: 45
   tempCycleValue: 0
