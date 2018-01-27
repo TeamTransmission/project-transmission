@@ -26,9 +26,14 @@ public class PlayerCircuitLogic : MonoBehaviour {
     public GameObject rightDetector;
     public GameObject downDetector;
     public GameObject leftDetector;
-    
+
+    /// Add a context menu named "Do Something" in the inspector
+    /// of the attached script.
+    [ContextMenu("UpdateCircuitGraphics")]
+
     // Use this for initialization
-    void Start () {
+    void UpdateCircuitGraphics()
+    {
 
         upCircuit = transform.GetChild(0).gameObject;
         rightCircuit = transform.GetChild(1).gameObject;
@@ -39,6 +44,13 @@ public class PlayerCircuitLogic : MonoBehaviour {
         rightCircuit.SetActive(rightCircuitPresent);
         downCircuit.SetActive(downCircuitPresent);
         leftCircuit.SetActive(leftCircuitPresent);
+
+    }
+
+    // Use this for initialization
+    void Start () {
+
+        UpdateCircuitGraphics();
 
     }
 	
