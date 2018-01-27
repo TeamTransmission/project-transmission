@@ -35,7 +35,7 @@ public class PowerSource : MonoBehaviour {
         
         if(levelGoal)
         {
-            
+            manager.GetComponent<LevelComplete>().ActivateLevelComplete();
         }
 
     }

@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelComplete : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    private GameObject canvas;
+
+    // Use this for initialization
+    void Start () {
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+    }
 		
-	}
-		
-	void ActivateLevelComplete () {
-		
+	public void ActivateLevelComplete ()
+    {
+        canvas.GetComponentInChildren<Text>().enabled = true;
 	}
 }
