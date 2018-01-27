@@ -19,9 +19,7 @@ public class PowerSource : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
 
         anim.SetBool("active", false);
-
-        transform.GetChild(0).gameObject.SetActive(energised);
-
+        
         manager = GameObject.FindGameObjectWithTag("Manager");
 
         anim = GetComponent<Animator>();
@@ -34,8 +32,7 @@ public class PowerSource : MonoBehaviour {
     {
 
         energised = true;
-        transform.GetChild(0).gameObject.SetActive(true);
-
+        
         if(levelGoal)
         {
             
