@@ -54,7 +54,7 @@ public class PlayerDetectionLogic : MonoBehaviour {
 
     private void ColliderLogic(Collider2D other, bool enter)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == "ConductingBlock")
         {
 
             PlayerCircuitLogic otherPlayerCircuit = other.GetComponentInChildren<PlayerCircuitLogic>();
