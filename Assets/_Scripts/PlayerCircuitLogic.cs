@@ -62,7 +62,7 @@ public class PlayerCircuitLogic : MonoBehaviour {
         downEnergised = downDetector.GetComponent<PlayerDetectionLogic>().detection;
         leftEnergised = leftDetector.GetComponent<PlayerDetectionLogic>().detection;
 
-        circuitEnergised = upEnergised || rightEnergised || downEnergised || leftEnergised;
+        circuitEnergised = (upCircuitPresent && upEnergised) || (rightCircuitPresent && rightEnergised) || (downCircuitPresent && downEnergised) || (leftCircuitPresent && leftEnergised);
             
 
         SetMaterialBasedOnEnergisation(upCircuit, circuitEnergised);
