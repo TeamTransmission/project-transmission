@@ -17,6 +17,11 @@ public class PlayerCircuitLogic : MonoBehaviour {
     public Material nonEnergisedMaterial;
     public Material energisedMaterial;
 
+    public GameObject upDetector;
+    public GameObject rightDetector;
+    public GameObject downDetector;
+    public GameObject leftDetector;
+
     // Use this for initialization
     void Start () {
 

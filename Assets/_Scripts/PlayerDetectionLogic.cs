@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerDetectionLogic : MonoBehaviour {
     
     //public GameObject ConnectionNoise;
-    private bool detection = false;
+    public bool detection = false;
     public string direction;
+    private int detectionCounter = 0;
     
     void Start()
     {
@@ -40,13 +41,16 @@ public class PlayerDetectionLogic : MonoBehaviour {
                     detection = otherPlayerCircuit.leftCircuitPresent && otherPlayerCircuit.circuitEnergised;
                     break;                    
             }
-                    
-                       
-            
+
+            detectionCounter++;
+
+
         }
         else if (other.tag == "PowerSource")
         {
             Debug.Log("Collision detected to PowerSource");
+            detectionCounter++;
+            detection = true;
         }
 
         if (detection)
@@ -59,7 +63,11 @@ public class PlayerDetectionLogic : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        detection = false;
+        detectionCounter--;
+        if (detectionCounter < 1)
+        {
+            detection = false;
+        }
     }
 
 }

@@ -252,7 +252,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1306682731394520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4156096121364014}
@@ -764,6 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf76db3dfd827de4e9c0d2f8805a3775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detection: 0
   direction: Left
 --- !u!114 &114424991488327650
 MonoBehaviour:
@@ -776,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf76db3dfd827de4e9c0d2f8805a3775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detection: 0
   direction: Down
 --- !u!114 &114479800553278076
 MonoBehaviour:
@@ -796,6 +798,10 @@ MonoBehaviour:
   nonEnergisedMaterial: {fileID: 2100000, guid: f20066c1a298f2340830fcbf24c454d3,
     type: 2}
   energisedMaterial: {fileID: 2100000, guid: cc579c9a5b4830b41955476bc72ae3a3, type: 2}
+  upDetector: {fileID: 1267596032933522}
+  rightDetector: {fileID: 1402212613165864}
+  downDetector: {fileID: 1752225766700452}
+  leftDetector: {fileID: 1940989780381450}
 --- !u!114 &114687342915088378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -807,6 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf76db3dfd827de4e9c0d2f8805a3775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detection: 0
   direction: Right
 --- !u!114 &114725266409145936
 MonoBehaviour:
@@ -819,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf76db3dfd827de4e9c0d2f8805a3775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detection: 0
   direction: Up
 --- !u!114 &114954988462272192
 MonoBehaviour:
