@@ -52,6 +52,8 @@ public class CharacterSelector : MonoBehaviour
         if (Input.GetButtonDown("xbox button rb"))
         {
 
+            OrderPlayerList();
+
             if (activePlayer == null)
             {
                 SetDefaultPlayer();
@@ -77,6 +79,8 @@ public class CharacterSelector : MonoBehaviour
 
         if (Input.GetButtonDown("xbox button lb"))
         {
+
+            OrderPlayerList();
 
             if (activePlayer == null)
             {
