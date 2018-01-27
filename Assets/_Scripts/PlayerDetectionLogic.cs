@@ -40,14 +40,19 @@ public class PlayerDetectionLogic : MonoBehaviour {
                     detection = otherPlayerCircuit.leftCircuitPresent && otherPlayerCircuit.circuitEnergised;
                     break;                    
             }
-
-
-            if (detection)
-            {
-                //AudioSource audio = ConnectionNoise.GetComponent<AudioSource>();
-                //audio.Play();
-            }
+                    
+                       
             
+        }
+        else if (other.tag == "PowerSource")
+        {
+            Debug.Log("Collision detected to PowerSource");
+        }
+
+        if (detection)
+        {
+            //AudioSource audio = ConnectionNoise.GetComponent<AudioSource>();
+            //audio.Play();
         }
 
     }
