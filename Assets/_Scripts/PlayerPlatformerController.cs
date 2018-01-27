@@ -52,11 +52,11 @@ public class PlayerPlatformerController : PhysicsObject {
 
         move.x = 1;
 
-        move.x = Input.GetAxis("Horizontal");
+        //move.x = Input.GetAxis("Horizontal");
         
         //The -1 bug comes from the game pad axis
 
-        //move.x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad");
+        move.x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad");
         //move.x = Input.GetAxis("HorizontalGamePad");
 
         if (Input.GetButtonDown("xbox button a") && grounded)
