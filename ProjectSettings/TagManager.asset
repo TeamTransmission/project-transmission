@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PowerSource
+  - Manager
   layers:
   - Default
   - TransparentFX
