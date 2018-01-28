@@ -12,6 +12,7 @@ TagManager:
   - ConductingBlock
   - ConnectionNoise
   - DisconnectNoise
+  - HumNoise
   layers:
   - Default
   - TransparentFX
