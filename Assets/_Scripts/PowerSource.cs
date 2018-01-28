@@ -68,6 +68,15 @@ public class PowerSource : MonoBehaviour {
     {
         RemoveFromColliderList(collider);
 
+        for(int i =0;i< activeColliders.Count; i++)
+        {
+            //this doesn't quite work yet since Player still thinks they should be energised
+            if (!activeColliders[i].gameObject.GetComponentInChildren<PlayerCircuitLogic>().circuitEnergised)
+            {
+                activeColliders.Remove(activeColliders[i]);
+            }
+        }
+
         if(activeColliders.Count ==0 && !startBlock)
         {
             energised = false;
