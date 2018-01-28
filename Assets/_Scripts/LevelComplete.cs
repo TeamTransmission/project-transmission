@@ -25,7 +25,7 @@ public class LevelComplete : MonoBehaviour {
         music.GetComponent<AudioSource>().Stop();
         levelCompleteSound.GetComponent<AudioSource>().Play();
 
-        StartCoroutine(FadePause("Next", 2.0f));
+        StartCoroutine(FadePause("Next", 4.0f));
 
     }
 
@@ -35,13 +35,15 @@ public class LevelComplete : MonoBehaviour {
         yield return new WaitForSeconds(fadeTime);
         Debug.Log("Countdown Done");
 
-        if(SceneManager.sceneCount< SceneManager.GetActiveScene().buildIndex)      
+        if(SceneManager.sceneCountInBuildSettings> SceneManager.GetActiveScene().buildIndex + 1)      
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
             canvas.GetComponentInChildren<Text>().text = "THANKS FOR PLAYING";
+            yield return new WaitForSeconds(10.0f);
+            SceneManager.LoadScene(0);
         }
 
     }
