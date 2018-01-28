@@ -16,8 +16,11 @@ public class TriggeredMovingPlatform : MonoBehaviour
 
     public bool ContinuouslyMoving = false;
 
+    private GameObject humNoise;
+
     void Start()
     {
+        humNoise = GameObject.FindGameObjectWithTag("HumNoise");
         WayPointLength = Waypoints.Length;
     }
 
@@ -28,6 +31,7 @@ public class TriggeredMovingPlatform : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, Waypoints[Marker].transform.position, speed * Time.deltaTime);
 
 
+
         if (!ContinuouslyMoving)
         {
 
@@ -36,6 +40,11 @@ public class TriggeredMovingPlatform : MonoBehaviour
                 if (Marker < WayPointLength - 1)
                 {
                     Marker++;
+                }
+                else
+                {
+                    AudioSource audio = humNoise.GetComponent<AudioSource>();
+                    audio.Stop();
                 }
             }
             if (Marker == Waypoints.Length - 1 & Trigger.GetComponent<PowerSource>().energised == false && reverses == true)
