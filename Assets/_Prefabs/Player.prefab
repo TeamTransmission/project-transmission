@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 212070302841618076}
   - component: {fileID: 114898128406243802}
   - component: {fileID: 82299276807288476}
+  - component: {fileID: 114408583636338060}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -723,9 +724,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8e9583f6e6023a9418f7c66264b7f27c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2a8be5459e2f42041b7a851977391881, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.533
+  m_Volume: 1
   m_Pitch: 2.12
   Loop: 0
   Mute: 0
@@ -825,6 +826,17 @@ MonoBehaviour:
   detection: 0
   direction: Left
   activeColliders: []
+--- !u!114 &114408583636338060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1306682731394520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d647ad552efe5419ba98b3cb11ee1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114424991488327650
 MonoBehaviour:
   m_ObjectHideFlags: 1
