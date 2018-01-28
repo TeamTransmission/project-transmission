@@ -129,7 +129,7 @@ public class PlayerDetectionLogic : MonoBehaviour {
             other.GetComponent<PowerSource>().UnEnergise(thisColllider);
         }
 
-            if (activeColliders.Count==0)
+            if (detection && activeColliders.Count==0)
         {
             AudioSource audio = disconnectNoise.GetComponent<AudioSource>();
             audio.Play();
