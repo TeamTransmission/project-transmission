@@ -20,6 +20,11 @@ public class UserSettings : MonoBehaviour {
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+        if (Time.timeScale == 0)
+        {
+            // not paused
+            Unpause();
+        }
     }
 
     public void AdjustVolume()
