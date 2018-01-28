@@ -12,6 +12,8 @@ public class TriggeredMovingPlatform : MonoBehaviour
     public Transform[] Waypoints;
     public GameObject Trigger;
 
+    public bool reverses = false;
+
     public bool ContinuouslyMoving = false;
 
     void Start()
@@ -36,7 +38,7 @@ public class TriggeredMovingPlatform : MonoBehaviour
                     Marker++;
                 }
             }
-            if (Marker == Waypoints.Length - 1 & Trigger.GetComponent<PowerSource>().energised == false)
+            if (Marker == Waypoints.Length - 1 & Trigger.GetComponent<PowerSource>().energised == false && reverses == true)
             {
                 Marker = 0;
             }
