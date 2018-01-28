@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4258269141181490}
   - component: {fileID: 61404649697535180}
   - component: {fileID: 114052756978515544}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4939683420928808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Detectors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4537685592101568}
   - component: {fileID: 114392011628185870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 33620468109655534}
   - component: {fileID: 65372564265046870}
   - component: {fileID: 23992725794631016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 33883139751230396}
   - component: {fileID: 65268833021501746}
   - component: {fileID: 23450830234033250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 4699376926889526}
   - component: {fileID: 61326367239916906}
   - component: {fileID: 114803205834112278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 61485738834137210}
   - component: {fileID: 50124954744110148}
   - component: {fileID: 114646935064426422}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ConductingBlock
   m_TagString: ConductingBlock
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 33864867931185838}
   - component: {fileID: 65381172840961250}
   - component: {fileID: 23440923961531326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 4638952327325368}
   - component: {fileID: 61248193635788466}
   - component: {fileID: 114428806020855976}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 4146426485704336}
   - component: {fileID: 61263827711814560}
   - component: {fileID: 114770868577764122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 33059145631186990}
   - component: {fileID: 65244857181944688}
   - component: {fileID: 23268536098666948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1485254781767344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 3.4888408, y: -3.5117536, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4537685592101568}
