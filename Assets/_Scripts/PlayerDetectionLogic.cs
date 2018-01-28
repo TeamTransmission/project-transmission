@@ -11,10 +11,12 @@ public class PlayerDetectionLogic : MonoBehaviour {
     private Collider2D thisColllider;
 
     private GameObject connectionNoise;
+    private GameObject disconnectNoise;
 
     void Start()
     {
         connectionNoise = GameObject.FindGameObjectWithTag("ConnectionNoise");
+        disconnectNoise = GameObject.FindGameObjectWithTag("DisconnectNoise");
 
         thisColllider = GetComponent<Collider2D>();
 
@@ -129,6 +131,9 @@ public class PlayerDetectionLogic : MonoBehaviour {
 
             if (activeColliders.Count==0)
         {
+            AudioSource audio = disconnectNoise.GetComponent<AudioSource>();
+            audio.Play();
+
             detection = false;
         }
     }
