@@ -19,12 +19,20 @@ public class PlayerPlatformerController : PhysicsObject
 
     public float tempCycleValue;
 
+    public bool gamepadAttached;
+
     // Use this for initialization
     void Start()
     {
 
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        
+       string[] joystickNames = Input.GetJoystickNames();
+
+        Debug.Log("Joysticks attached = " + joystickNames.Length);
+
+        gamepadAttached = !(joystickNames.Length == 0);        
 
     }
 
@@ -57,7 +65,11 @@ public class PlayerPlatformerController : PhysicsObject
 
         if (thisCharacterIsActive)
         {
-            move.x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad");
+            if (gamepadAttached)
+                move.x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad");
+            else
+                move.x = Input.GetAxis("Horizontal");
+                    
             anim.SetBool("locked", false);
 
         }
