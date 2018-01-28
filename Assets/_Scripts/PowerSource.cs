@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PowerSource : MonoBehaviour {
 
-    public bool energised;
-    public bool levelGoal;
+    public bool startBlock;
+    public bool energised;    
 
     public List<Collider2D> activeColliders = new List<Collider2D>();
+
+    private GameObject[] generators;
+    private int generatorCount;
 
     Animator anim;
     SpriteRenderer sr;
@@ -17,6 +20,13 @@ public class PowerSource : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+
+        generators = GameObject.FindGameObjectsWithTag("PowerSource");
+
+        generatorCount = generators.Length;
+
+        energised = startBlock;
+
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
 
@@ -34,16 +44,34 @@ public class PowerSource : MonoBehaviour {
     {
 
         energised = true;
-        
-        if(levelGoal)
+
+        bool levelComplete = true;
+
+        for(int i=0; i < generatorCount; i++)
+        {
+            if (!generators[i].GetComponent<PowerSource>().energised)
+                {
+                levelComplete = false;
+            }
+        }
+
+        if(levelComplete)
         {
             manager.GetComponent<LevelComplete>().ActivateLevelComplete();
         }
 
+        AddToColliderList(collider);
+
     }
 
-    public void unEnergise()
+    public void UnEnergise(Collider2D collider)
     {
+        RemoveFromColliderList(collider);
+
+        if(activeColliders.Count ==0 && !startBlock)
+        {
+            energised = false;
+        }
 
     }
 
@@ -57,6 +85,37 @@ public class PowerSource : MonoBehaviour {
         {
             anim.SetBool("active", false);
         }
+    }
+
+    void AddToColliderList(Collider2D coll)
+    {
+        bool alreadyInList = false;
+
+        for (int i = 0; i < activeColliders.Count; i++)
+        {
+            if (activeColliders[i] = coll)
+            {
+                alreadyInList = true;
+            }
+        }
+
+        if (!alreadyInList)
+        {
+            activeColliders.Add(coll);
+        }
+    }
+
+    void RemoveFromColliderList(Collider2D coll)
+    {
+
+        for (int i = 0; i < activeColliders.Count; i++)
+        {
+            if (activeColliders[i] = coll)
+            {
+                activeColliders.Remove(activeColliders[i]);
+            }
+        }
+
     }
 
 }

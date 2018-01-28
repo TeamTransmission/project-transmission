@@ -122,7 +122,12 @@ public class PlayerDetectionLogic : MonoBehaviour {
         //detectionCounter--;
         RemoveFromColliderList(other);
 
-        if (activeColliders.Count==0)
+        if (other.tag == "PowerSource")
+        {
+            other.GetComponent<PowerSource>().UnEnergise(thisColllider);
+        }
+
+            if (activeColliders.Count==0)
         {
             detection = false;
         }

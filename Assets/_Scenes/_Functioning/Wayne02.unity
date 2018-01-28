@@ -1313,6 +1313,11 @@ Prefab:
       propertyPath: energised
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114555565334559402, guid: b33aff53795e372499e70dd4e0210a20,
+        type: 2}
+      propertyPath: startBlock
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b33aff53795e372499e70dd4e0210a20, type: 2}
   m_IsPrefabParent: 0
