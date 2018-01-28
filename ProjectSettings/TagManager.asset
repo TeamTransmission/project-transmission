@@ -11,6 +11,7 @@ TagManager:
   - LevelCompleteSound
   - ConductingBlock
   - ConnectionNoise
+  - DisconnectNoise
   layers:
   - Default
   - TransparentFX
