@@ -17,9 +17,13 @@ public class PowerSource : MonoBehaviour {
 
     private GameObject manager;
 
-	// Use this for initialization
-	void Start ()
+    private GameObject humNoise;
+
+    // Use this for initialization
+    void Start ()
     {
+
+        humNoise = GameObject.FindGameObjectWithTag("HumNoise");
 
         generators = GameObject.FindGameObjectsWithTag("PowerSource");
 
@@ -44,6 +48,9 @@ public class PowerSource : MonoBehaviour {
     {
 
         energised = true;
+
+        AudioSource audio = humNoise.GetComponent<AudioSource>();
+        audio.Play();
 
         bool levelComplete = true;
 
@@ -80,6 +87,10 @@ public class PowerSource : MonoBehaviour {
         if(activeColliders.Count ==0 && !startBlock)
         {
             energised = false;
+
+            AudioSource audio = humNoise.GetComponent<AudioSource>();
+            audio.Stop();
+
         }
 
     }
