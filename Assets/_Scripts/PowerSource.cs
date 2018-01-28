@@ -7,6 +7,8 @@ public class PowerSource : MonoBehaviour {
     public bool energised;
     public bool levelGoal;
 
+    public List<Collider2D> activeColliders = new List<Collider2D>();
+
     Animator anim;
     SpriteRenderer sr;
 
@@ -28,7 +30,7 @@ public class PowerSource : MonoBehaviour {
         anim.SetBool("active", false);
     }
 
-    public void Energise()
+    public void Energise(Collider2D collider)
     {
 
         energised = true;
@@ -37,6 +39,11 @@ public class PowerSource : MonoBehaviour {
         {
             manager.GetComponent<LevelComplete>().ActivateLevelComplete();
         }
+
+    }
+
+    public void unEnergise()
+    {
 
     }
 

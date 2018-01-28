@@ -8,11 +8,16 @@ public class PlayerDetectionLogic : MonoBehaviour {
     public bool detection = false;
     public string direction;
     public List<Collider2D> activeColliders= new List<Collider2D>();
-    
+    private Collider2D thisColllider;
+
+    private GameObject connectionNoise;
+
     void Start()
     {
-        //ConnectionNoise = GameObject.FindGameObjectWithTag("CoinCollectNoise");
-        
+        connectionNoise = GameObject.FindGameObjectWithTag("ConnectionNoise");
+
+        thisColllider = GetComponent<Collider2D>();
+
         switch (direction)
         {
             case "Up":
@@ -39,8 +44,10 @@ public class PlayerDetectionLogic : MonoBehaviour {
 
         if (detection)
         {
-            //AudioSource audio = ConnectionNoise.GetComponent<AudioSource>();
-            //audio.Play();
+            Debug.Log("Connection noise play");
+
+            AudioSource audio = connectionNoise.GetComponent<AudioSource>();
+            audio.Play();
         }
 
     }
@@ -103,7 +110,7 @@ public class PlayerDetectionLogic : MonoBehaviour {
             else if(transform.parent.parent.GetComponentInChildren<PlayerCircuitLogic>().circuitEnergised)
             {
                 //activate the checkpoint or level exit
-                other.GetComponent<PowerSource>().Energise();
+                other.GetComponent<PowerSource>().Energise(thisColllider);
             }
         }        
 
