@@ -19,7 +19,7 @@ public class MenuControllerSupport : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(Input.GetButtonDown("xbox button a") || Input.GetButtonDown("xbox button start") || Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalGamePad") != 0)
+        if(Input.GetButtonDown("xbox button a") || Input.GetButtonDown("xbox button start"))
         {
 
             //if this is the first time this runs, find the button gameObjects
