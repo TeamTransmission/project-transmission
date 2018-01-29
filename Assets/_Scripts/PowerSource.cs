@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerSource : MonoBehaviour {
+public class PowerSource : ConductingObject {
 
     public bool startBlock;
     public bool energised;    

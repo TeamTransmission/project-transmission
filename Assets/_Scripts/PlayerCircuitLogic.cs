@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerCircuitLogic : MonoBehaviour {
+public class PlayerCircuitLogic : ConductingObject {
 
     private GameObject upCircuit;
     private GameObject rightCircuit;
