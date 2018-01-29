@@ -31,9 +31,9 @@ public class LevelComplete : MonoBehaviour {
 
     IEnumerator FadePause(string SceneToChangeTo, float fadeTime)
     {
-        Debug.Log("Fade Started");
+        //Debug.Log("Fade Started");
         yield return new WaitForSeconds(fadeTime);
-        Debug.Log("Countdown Done");
+        //Debug.Log("Countdown Done");
 
         if(SceneManager.sceneCountInBuildSettings> SceneManager.GetActiveScene().buildIndex + 1)      
         {

@@ -13,7 +13,7 @@ public class UserSettings : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     public void Restartdude()

@@ -30,7 +30,7 @@ public class PlayerPlatformerController : PhysicsObject
         
        string[] joystickNames = Input.GetJoystickNames();
 
-        Debug.Log("Joysticks attached = " + joystickNames.Length);
+        //Debug.Log("Joysticks attached = " + joystickNames.Length);
 
         gamepadAttached = !(joystickNames.Length == 0);        
 

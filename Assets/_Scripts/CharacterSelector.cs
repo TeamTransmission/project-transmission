@@ -34,10 +34,10 @@ public class CharacterSelector : MonoBehaviour
 
         for (int i = 0; i < playerCount; i++)
         {
-            Debug.Log(players[i].transform.position.x);
+            //Debug.Log(players[i].transform.position.x);
         }
 
-        Debug.Log("Player Count = " + playerCount.ToString());
+        //Debug.Log("Player Count = " + playerCount.ToString());
 
         //temp character selector
         SetDefaultPlayer();

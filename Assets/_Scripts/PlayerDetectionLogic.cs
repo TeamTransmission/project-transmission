@@ -46,7 +46,7 @@ public class PlayerDetectionLogic : MonoBehaviour {
 
         if (detection)
         {
-            Debug.Log("Connection noise play");
+            //Debug.Log("Connection noise play");
 
             AudioSource audio = connectionNoise.GetComponent<AudioSource>();
             audio.Play();
