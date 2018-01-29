@@ -19,6 +19,8 @@ public class PowerSource : MonoBehaviour {
 
     private GameObject humNoise;
 
+    public bool staysEnergised; //temp fix to stop game breaking on Level01 and 02
+
     // Use this for initialization
     void Start ()
     {
@@ -86,10 +88,13 @@ public class PowerSource : MonoBehaviour {
 
         if(activeColliders.Count ==0 && !startBlock)
         {
-            energised = false;
+            if (!staysEnergised)
+            {
+                energised = false;
 
-            AudioSource audio = humNoise.GetComponent<AudioSource>();
-            audio.Stop();
+                AudioSource audio = humNoise.GetComponent<AudioSource>();
+                audio.Stop();
+            }
 
         }
 
