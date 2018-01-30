@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ConductingObject : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    
+    public bool powered;
+    
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
