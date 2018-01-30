@@ -2407,6 +2407,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VolumeSlider: {fileID: 200680253}
+  pausePanel: {fileID: 0}
+  helpPanel: {fileID: 0}
+  audioPanel: {fileID: 0}
 --- !u!224 &1660982568
 RectTransform:
   m_ObjectHideFlags: 0
