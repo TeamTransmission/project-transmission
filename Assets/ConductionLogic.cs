@@ -9,6 +9,9 @@ public class ConductionLogic : MonoBehaviour {
 
     private ConductingObject startBlock;
 
+    private GameObject connectionNoise;
+    private GameObject disconnectNoise;
+
     // Use this for initialization
     void Start () {
 
@@ -16,7 +19,10 @@ public class ConductionLogic : MonoBehaviour {
         GameObject[] generators = GameObject.FindGameObjectsWithTag("PowerSource");
         GameObject[] conductingBlocks = GameObject.FindGameObjectsWithTag("ConductingBlock");
 
-        for(int i = 0;i<players.Length;i++)
+        connectionNoise = GameObject.FindGameObjectWithTag("ConnectionNoise");
+        disconnectNoise = GameObject.FindGameObjectWithTag("DisconnectNoise");
+
+        for (int i = 0;i<players.Length;i++)
         {
             PlayerCircuitLogic script = players[i].GetComponentInChildren<PlayerCircuitLogic>();
             conductingObjects.Add(script);
@@ -64,6 +70,13 @@ public class ConductionLogic : MonoBehaviour {
             //Unpower all objects remaining in unEnergisedConductors list
             for (int i = 0; i < unEnergisedConductors.Count; i++)
             {
+
+                if (unEnergisedConductors[i].powered)
+                { 
+                    AudioSource audio = disconnectNoise.GetComponent<AudioSource>();
+                    audio.Play();
+                }
+
                 unEnergisedConductors[i].powered = false;
             }
         }
@@ -87,6 +100,12 @@ public class ConductionLogic : MonoBehaviour {
                     //Decriment the value of i so that index doesn't go out of bounds
                     i--;
 
+                    if (!unEnergisedConductors[i].powered)
+                    {
+                        AudioSource audio = connectionNoise.GetComponent<AudioSource>();
+                        audio.Play();
+                    }
+
                     newEnergisedConductor.powered = true;
 
                     CheckForContact(newEnergisedConductor);
@@ -103,14 +122,34 @@ public class ConductionLogic : MonoBehaviour {
     bool AreConductorsCompatible(ConductingObject conductorA, ConductingObject conductorB)
     {
 
-        bool compatible = true;
+        float xOffset = conductorA.transform.position.x - conductorB.transform.position.x;
+        float yOffset = conductorA.transform.position.y - conductorB.transform.position.y;
 
-        //find out where they are positioned relative to each other
+        //are the players to the side of each other?
+        if(Mathf.Abs(xOffset)>Mathf.Abs(yOffset))
+        {
 
-        //
-
-        return compatible;
-
+            if(xOffset>0) //a right of b
+            {
+                return conductorA.leftCircuitPresent && conductorB.rightCircuitPresent;
+            }
+            else //a left of b
+            {
+                return conductorA.rightCircuitPresent && conductorB.leftCircuitPresent;
+            }
+        }
+        else //must be above or below
+        {
+            if (yOffset>0) //a above b
+            {
+                return conductorA.downCircuitPresent && conductorB.upCircuitPresent;
+            }
+            else //a below b
+            {
+                return conductorA.upCircuitPresent && conductorB.downCircuitPresent;
+            }
+        }
+        
     }
 
 

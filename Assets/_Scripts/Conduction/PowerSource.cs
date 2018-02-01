@@ -25,6 +25,11 @@ public class PowerSource : ConductingObject {
     void Start ()
     {
 
+        upCircuitPresent = true;
+        rightCircuitPresent = true;
+        downCircuitPresent = true;
+        leftCircuitPresent = true;
+
         humNoise = GameObject.FindGameObjectWithTag("HumNoise");
 
         generators = GameObject.FindGameObjectsWithTag("PowerSource");

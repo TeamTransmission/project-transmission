@@ -7,10 +7,7 @@ public class PlayerCircuitLogic : ConductingObject {
     private GameObject downCircuit;
     private GameObject leftCircuit;
 
-    public bool upCircuitPresent;
-    public bool rightCircuitPresent;
-    public bool downCircuitPresent;
-    public bool leftCircuitPresent;
+    
 
     public bool upEnergised;
     public bool rightEnergised;
@@ -21,12 +18,7 @@ public class PlayerCircuitLogic : ConductingObject {
 
     public Material nonEnergisedMaterial;
     public Material energisedMaterial;
-
-    public GameObject upDetector;
-    public GameObject rightDetector;
-    public GameObject downDetector;
-    public GameObject leftDetector;
-
+    
     /// Add a context menu named "Do Something" in the inspector
     /// of the attached script.
     [ContextMenu("UpdateCircuitGraphics")]
@@ -56,20 +48,12 @@ public class PlayerCircuitLogic : ConductingObject {
 	
 	// Update is called once per frame
 	void Update () {              
-
-        upEnergised = upDetector.GetComponent<PlayerDetectionLogic>().detection;
-        rightEnergised = rightDetector.GetComponent<PlayerDetectionLogic>().detection;
-        downEnergised = downDetector.GetComponent<PlayerDetectionLogic>().detection;
-        leftEnergised = leftDetector.GetComponent<PlayerDetectionLogic>().detection;
-
-        circuitEnergised = (upCircuitPresent && upEnergised) || (rightCircuitPresent && rightEnergised) || (downCircuitPresent && downEnergised) || (leftCircuitPresent && leftEnergised);
-            
-
-        SetMaterialBasedOnEnergisation(upCircuit, circuitEnergised);
-        SetMaterialBasedOnEnergisation(rightCircuit, circuitEnergised);
-        SetMaterialBasedOnEnergisation(downCircuit, circuitEnergised);
-        SetMaterialBasedOnEnergisation(leftCircuit, circuitEnergised);
-
+        
+        //this is a bit expensive to do every frame.  bool powered should be encapsolated so that set material can be part of the setter method
+        SetMaterialBasedOnEnergisation(upCircuit, powered);
+        SetMaterialBasedOnEnergisation(rightCircuit, powered);
+        SetMaterialBasedOnEnergisation(downCircuit, powered);
+        SetMaterialBasedOnEnergisation(leftCircuit, powered);
     }
 
 
