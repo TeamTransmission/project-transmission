@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class PowerSource : ConductingObject {
 
-    public bool startBlock;
-    public bool energised;    
-
-    public List<Collider2D> activeColliders = new List<Collider2D>();
-
-    private GameObject[] generators;
-    private int generatorCount;
-
+    public bool startBlock;      
+        
     Animator anim;
     SpriteRenderer sr;
 
     private GameObject manager;
 
     private GameObject humNoise;
+    
+    public static int totalPowerSources;
+    public static int energisedSourcesCounter;
 
-    public bool staysEnergised; //temp fix to stop game breaking on Level01 and 02
+    private bool levelComplete = false;
 
     // Use this for initialization
     void Start ()
     {
+
+        totalPowerSources++;
 
         upCircuitPresent = true;
         rightCircuitPresent = true;
@@ -31,13 +30,7 @@ public class PowerSource : ConductingObject {
         leftCircuitPresent = true;
 
         humNoise = GameObject.FindGameObjectWithTag("HumNoise");
-
-        generators = GameObject.FindGameObjectsWithTag("PowerSource");
-
-        generatorCount = generators.Length;
-
-        energised = startBlock;
-
+        
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
 
@@ -48,66 +41,16 @@ public class PowerSource : ConductingObject {
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
 
-        anim.SetBool("active", false);
-    }
-
-    public void Energise(Collider2D collider)
-    {
-
-        energised = true;
-
-        AudioSource audio = humNoise.GetComponent<AudioSource>();
-        audio.Play();
-
-        bool levelComplete = true;
-
-        for(int i=0; i < generatorCount; i++)
-        {
-            if (!generators[i].GetComponent<PowerSource>().energised)
-                {
-                levelComplete = false;
-            }
-        }
-
-        if(levelComplete)
-        {
-            manager.GetComponent<LevelComplete>().ActivateLevelComplete();
-        }
-
-        AddToColliderList(collider);
+        anim.SetBool("active", false);        
 
     }
-
-    public void UnEnergise(Collider2D collider)
-    {
-        RemoveFromColliderList(collider);
-
-        for(int i =0;i< activeColliders.Count; i++)
-        {
-            //this doesn't quite work yet since Player still thinks they should be energised
-            if (!activeColliders[i].gameObject.GetComponentInChildren<PlayerCircuitLogic>().circuitEnergised)
-            {
-                activeColliders.Remove(activeColliders[i]);
-            }
-        }
-
-        if(activeColliders.Count ==0 && !startBlock)
-        {
-            if (!staysEnergised)
-            {
-                energised = false;
-
-                AudioSource audio = humNoise.GetComponent<AudioSource>();
-                audio.Stop();
-            }
-
-        }
-
-    }
-
+    
+        
     void Update()
     {
-        if (energised)
+
+        //this could be part of @Override GetPowered() instead to be more efficient
+        if (powered)
         {
             anim.SetBool("active", true);
         }
@@ -116,34 +59,25 @@ public class PowerSource : ConductingObject {
             anim.SetBool("active", false);
         }
     }
+    
+    public override void SetPowered(bool state)
+    {       
 
-    void AddToColliderList(Collider2D coll)
-    {
-        bool alreadyInList = false;
-
-        for (int i = 0; i < activeColliders.Count; i++)
+        if(state && ! this.GetPowered())
         {
-            if (activeColliders[i] = coll)
-            {
-                alreadyInList = true;
-            }
+            energisedSourcesCounter++;
+        }
+        else if (!state && this.GetPowered())
+        {
+            energisedSourcesCounter--;
         }
 
-        if (!alreadyInList)
-        {
-            activeColliders.Add(coll);
-        }
-    }
+        base.SetPowered(state);
 
-    void RemoveFromColliderList(Collider2D coll)
-    {
-
-        for (int i = 0; i < activeColliders.Count; i++)
+        if(energisedSourcesCounter == totalPowerSources && !levelComplete)
         {
-            if (activeColliders[i] = coll)
-            {
-                activeColliders.Remove(activeColliders[i]);
-            }
+            manager.GetComponent<LevelComplete>().ActivateLevelComplete();
+            levelComplete = true;
         }
 
     }

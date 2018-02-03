@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ConductingObject : MonoBehaviour {
     
-    public bool powered;
+    protected bool powered;
 
-    public bool upCircuitPresent;
-    public bool rightCircuitPresent;
-    public bool downCircuitPresent;
-    public bool leftCircuitPresent;
+    protected bool upCircuitPresent;
+    protected bool rightCircuitPresent;
+    protected bool downCircuitPresent;
+    protected bool leftCircuitPresent;
 
     // Use this for initialization
     void Start () {
@@ -21,4 +21,34 @@ public class ConductingObject : MonoBehaviour {
 		
 	}
     
+    public bool GetPowered()
+    {
+        return this.powered;
+    }
+
+    public virtual void SetPowered(bool state)
+    {
+        this.powered = state;
+    }
+
+    public bool GetUpCircuitPresent()
+    {
+        return upCircuitPresent;
+    }
+
+    public bool GetRightCircuitPresent()
+    {
+        return rightCircuitPresent;
+    }
+
+    public bool GetDownCircuitPresent()
+    {
+        return downCircuitPresent;
+    }
+
+    public bool GetLeftCircuitPresent()
+    {
+        return leftCircuitPresent;
+    }
+
 }

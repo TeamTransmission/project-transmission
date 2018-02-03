@@ -6,16 +6,7 @@ public class PlayerCircuitLogic : ConductingObject {
     private GameObject rightCircuit;
     private GameObject downCircuit;
     private GameObject leftCircuit;
-
-    
-
-    public bool upEnergised;
-    public bool rightEnergised;
-    public bool downEnergised;
-    public bool leftEnergised;
-
-    public bool circuitEnergised;
-
+        
     public Material nonEnergisedMaterial;
     public Material energisedMaterial;
     
@@ -32,10 +23,10 @@ public class PlayerCircuitLogic : ConductingObject {
         downCircuit = transform.GetChild(2).gameObject;
         leftCircuit = transform.GetChild(3).gameObject;
 
-        upCircuit.SetActive(upCircuitPresent);
-        rightCircuit.SetActive(rightCircuitPresent);
-        downCircuit.SetActive(downCircuitPresent);
-        leftCircuit.SetActive(leftCircuitPresent);
+        upCircuitPresent = upCircuit.activeSelf;
+        rightCircuitPresent = rightCircuit.activeSelf;
+        downCircuitPresent = downCircuit.activeSelf;
+        leftCircuitPresent = leftCircuit.activeSelf;
 
     }
 

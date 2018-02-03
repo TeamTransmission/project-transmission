@@ -35,7 +35,7 @@ public class TriggeredMovingPlatform : MonoBehaviour
         if (!ContinuouslyMoving)
         {
 
-            if (transform.position == Waypoints[Marker].transform.position & Trigger.GetComponent<PowerSource>().energised == true)
+            if (transform.position == Waypoints[Marker].transform.position & Trigger.GetComponent<PowerSource>().GetPowered())
             {
                 if (Marker < WayPointLength - 1)
                 {
@@ -47,14 +47,14 @@ public class TriggeredMovingPlatform : MonoBehaviour
                     audio.Stop();
                 }
             }
-            if (Marker == Waypoints.Length - 1 & Trigger.GetComponent<PowerSource>().energised == false && reverses == true)
+            if (Marker == Waypoints.Length - 1 & Trigger.GetComponent<PowerSource>().GetPowered()== false && reverses == true)
             {
                 Marker = 0;
             }
         }
         else
         {
-            if (Trigger.GetComponent<PowerSource>().energised == true)
+            if (Trigger.GetComponent<PowerSource>().GetPowered())
             {
                 if (transform.position == Waypoints[Marker].transform.position)
                 {

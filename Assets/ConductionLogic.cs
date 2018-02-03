@@ -12,6 +12,8 @@ public class ConductionLogic : MonoBehaviour {
     private GameObject connectionNoise;
     private GameObject disconnectNoise;
 
+    int counter=0;
+
     // Use this for initialization
     void Start () {
 
@@ -38,7 +40,7 @@ public class ConductionLogic : MonoBehaviour {
             if(script.startBlock)
             {
                 startBlock = script;
-                startBlock.powered = true;
+                startBlock.SetPowered(true);
                 startBlockCount++;                
             }
             else
@@ -62,7 +64,10 @@ public class ConductionLogic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //Maybe make this run every few frames as to not be too expensive
+        counter++;
+
+        //make this run every few frames
+        if(counter==10)
         {
             unEnergisedConductors = new List<ConductingObject>(conductingObjects);
             CheckForContact(startBlock);
@@ -71,14 +76,16 @@ public class ConductionLogic : MonoBehaviour {
             for (int i = 0; i < unEnergisedConductors.Count; i++)
             {
 
-                if (unEnergisedConductors[i].powered)
+                if (unEnergisedConductors[i].GetPowered())
                 { 
                     AudioSource audio = disconnectNoise.GetComponent<AudioSource>();
                     audio.Play();
                 }
 
-                unEnergisedConductors[i].powered = false;
+                unEnergisedConductors[i].SetPowered(false);
             }
+
+            counter = 0;
         }
 
     }
@@ -87,7 +94,8 @@ public class ConductionLogic : MonoBehaviour {
     {              
 
         for(int i=0;i< unEnergisedConductors.Count; i++)
-        {           
+        {   
+                   
             if(Vector2.Distance(conductor.transform.position, unEnergisedConductors[i].transform.position)<1.2)
                 {
 
@@ -100,13 +108,13 @@ public class ConductionLogic : MonoBehaviour {
                     //Decriment the value of i so that index doesn't go out of bounds
                     i--;
 
-                    if (!unEnergisedConductors[i].powered)
+                    if (!newEnergisedConductor.GetPowered())
                     {
                         AudioSource audio = connectionNoise.GetComponent<AudioSource>();
                         audio.Play();
                     }
 
-                    newEnergisedConductor.powered = true;
+                    newEnergisedConductor.SetPowered(true);
 
                     CheckForContact(newEnergisedConductor);
                 }
@@ -131,22 +139,22 @@ public class ConductionLogic : MonoBehaviour {
 
             if(xOffset>0) //a right of b
             {
-                return conductorA.leftCircuitPresent && conductorB.rightCircuitPresent;
+                return conductorA.GetLeftCircuitPresent() && conductorB.GetRightCircuitPresent();
             }
             else //a left of b
             {
-                return conductorA.rightCircuitPresent && conductorB.leftCircuitPresent;
+                return conductorA.GetRightCircuitPresent() && conductorB.GetLeftCircuitPresent();
             }
         }
         else //must be above or below
         {
             if (yOffset>0) //a above b
             {
-                return conductorA.downCircuitPresent && conductorB.upCircuitPresent;
+                return conductorA.GetDownCircuitPresent() && conductorB.GetUpCircuitPresent();
             }
             else //a below b
             {
-                return conductorA.upCircuitPresent && conductorB.downCircuitPresent;
+                return conductorA.GetUpCircuitPresent() && conductorB.GetDownCircuitPresent();
             }
         }
         
