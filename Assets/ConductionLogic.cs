@@ -52,10 +52,11 @@ public class ConductionLogic : MonoBehaviour {
 
         for (int i = 0; i < conductingBlocks.Length; i++)
         {
-
             PlayerCircuitLogic script = conductingBlocks[i].GetComponentInChildren<PlayerCircuitLogic>();
-
-            conductingObjects.Add(script);
+            if (script != null)
+            {
+                conductingObjects.Add(script);
+            }      
 
         }
 

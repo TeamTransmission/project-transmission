@@ -18,12 +18,15 @@ public class PowerSource : ConductingObject {
 
     private bool levelComplete = false;
 
+    void Awake()
+    {
+        totalPowerSources++;
+    }
+
     // Use this for initialization
     void Start ()
     {
-
-        totalPowerSources++;
-
+        
         upCircuitPresent = true;
         rightCircuitPresent = true;
         downCircuitPresent = true;
