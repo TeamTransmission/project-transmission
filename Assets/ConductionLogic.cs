@@ -92,23 +92,23 @@ public class ConductionLogic : MonoBehaviour {
     }
 
     void CheckForContact(ConductingObject conductor)
-    {              
+    {
 
-        for(int i=0;i< unEnergisedConductors.Count; i++)
+        List<ConductingObject> listToLoopThrough = new List<ConductingObject>(unEnergisedConductors);
+
+        for (int i=0;i< listToLoopThrough.Count; i++)
         {   
-                   
-            if(Vector2.Distance(conductor.transform.position, unEnergisedConductors[i].transform.position)<1.2)
+
+            if(Vector2.Distance(conductor.transform.position, listToLoopThrough[i].transform.position)<1.5)
                 {
 
-                ConductingObject newEnergisedConductor = unEnergisedConductors[i];
+                ConductingObject newEnergisedConductor = listToLoopThrough[i];
 
                 if (AreConductorsCompatible(conductor,newEnergisedConductor))
                 {
-                    unEnergisedConductors.RemoveAt(i);
 
-                    //Decriment the value of i so that index doesn't go out of bounds
-                    i--;
-
+                    FindAndRemoveFromUnErergisedConductors(newEnergisedConductor);               
+                    
                     if (!newEnergisedConductor.GetPowered())
                     {
                         AudioSource audio = connectionNoise.GetComponent<AudioSource>();
@@ -161,5 +161,16 @@ public class ConductionLogic : MonoBehaviour {
         
     }
 
+    void FindAndRemoveFromUnErergisedConductors(ConductingObject conductor)
+    {
+        for(int i=0;i<unEnergisedConductors.Count;i++)
+        {
+            if(conductor == unEnergisedConductors[i])
+            {
+                unEnergisedConductors.RemoveAt(i);
+                break;
+            }
+        }
+    }
 
 }
