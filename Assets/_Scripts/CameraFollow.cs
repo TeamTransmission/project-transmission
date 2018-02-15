@@ -23,6 +23,8 @@ namespace UnityStandardAssets._2D
 
         private CharacterSelector charSelect;
 
+        private float cameraHeightAbovePlayer = 2f;
+
         // Use this for initialization
         private void Start()
         {
@@ -41,7 +43,7 @@ namespace UnityStandardAssets._2D
 
             target = charSelect.activePlayer.transform;
 
-            Vector3 targetPos = new Vector3(target.position.x, target.position.y+2f, target.position.z);
+            Vector3 targetPos = new Vector3(target.position.x, target.position.y+ cameraHeightAbovePlayer, target.position.z);
 
             currentTargetXLoc = targetPos.x;
                         
