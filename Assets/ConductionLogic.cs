@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ConductionLogic : MonoBehaviour {
 
-    public List<ConductingObject> conductingObjects = new List<ConductingObject>();
-    public List<ConductingObject> unEnergisedConductors;
+    private List<ConductingObject> conductingObjects = new List<ConductingObject>();
+    private List<ConductingObject> unEnergisedConductors;
 
     private ConductingObject startBlock;
 
@@ -13,6 +13,8 @@ public class ConductionLogic : MonoBehaviour {
     private GameObject disconnectNoise;
 
     int counter=0;
+
+    private double connectionDistance = 1.2; //distance that characters need to be within in order to make a connection
 
     // Use this for initialization
     void Start () {
@@ -99,7 +101,7 @@ public class ConductionLogic : MonoBehaviour {
         for (int i=0;i< listToLoopThrough.Count; i++)
         {   
 
-            if(Vector2.Distance(conductor.transform.position, listToLoopThrough[i].transform.position)<1.5)
+            if(Vector2.Distance(conductor.transform.position, listToLoopThrough[i].transform.position)< connectionDistance)
                 {
 
                 ConductingObject newEnergisedConductor = listToLoopThrough[i];
