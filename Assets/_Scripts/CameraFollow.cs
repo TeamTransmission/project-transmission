@@ -7,10 +7,10 @@ namespace UnityStandardAssets._2D
     public class CameraFollow : MonoBehaviour
     {
         private Transform target;
-        public float damping = 1;
-        public float lookAheadFactor = 3;
-        public float lookAheadReturnSpeed = 0.5f;
-        public float lookAheadMoveThreshold = 0.1f;
+        private float damping = 1;
+        private float lookAheadFactor = 3;
+        private float lookAheadReturnSpeed = 0.5f;
+        private float lookAheadMoveThreshold = 0.1f;
 
         //private float m_OffsetZ;
         private Vector3 m_LastTargetPosition;
@@ -18,12 +18,15 @@ namespace UnityStandardAssets._2D
         private Vector3 m_LookAheadPos;
         
         private float currentTargetXLoc;
-        
-        public int deadZoneWidth = 5;
+
+        private int deadZoneWidth = 5;
 
         private CharacterSelector charSelect;
 
-        private float cameraHeightAbovePlayer = 2f;
+        private float cameraHeightAbovePlayer = 3f;
+
+        public float minimumXLoc=0;
+        public float maximumXLoc=0;
 
         // Use this for initialization
         private void Start()
@@ -66,18 +69,35 @@ namespace UnityStandardAssets._2D
             
             float currentCameraXLoc = transform.position.x;
 
-            float cameraMin = currentTargetXLoc - deadZoneWidth / 2;
-            float cameraMax = currentTargetXLoc + deadZoneWidth / 2;
+            float cameraMinByDeadZone = currentTargetXLoc - deadZoneWidth / 2;                       
 
-            if (currentCameraXLoc > cameraMax)
+            float cameraMaxByDeadZone = currentTargetXLoc + deadZoneWidth / 2;                     
+
+            float newCameraPosition = currentCameraXLoc;
+
+            //ensure the camera only moves once player has exited the dead zone
+            if (currentCameraXLoc > cameraMaxByDeadZone)
             {
-                transform.position = new Vector3(cameraMax, newPos.y, transform.position.z);
+                newCameraPosition = cameraMaxByDeadZone;
             }
-            else if (currentCameraXLoc < cameraMin)
+            else if (currentCameraXLoc < cameraMinByDeadZone)
             {
-                transform.position = new Vector3(cameraMin, newPos.y, transform.position.z);
+                newCameraPosition = cameraMinByDeadZone;
             }
 
+            //ensure camera doesn't go past min/max values
+            if (newCameraPosition < minimumXLoc)
+            {
+                newCameraPosition = minimumXLoc;
+            }
+            else if (newCameraPosition > maximumXLoc)
+            {
+                newCameraPosition = maximumXLoc;
+            }
+
+            //update camera pos           
+            transform.position = new Vector3(newCameraPosition, transform.position.y, transform.position.z);  //leave fixed on y-axis for now
+            
             m_LastTargetPosition = targetPos;
 
         }
