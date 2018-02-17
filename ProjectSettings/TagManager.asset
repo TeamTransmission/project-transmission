@@ -13,6 +13,7 @@ TagManager:
   - ConnectionNoise
   - DisconnectNoise
   - HumNoise
+  - Background
   layers:
   - Default
   - TransparentFX
